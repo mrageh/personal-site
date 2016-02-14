@@ -45,3 +45,5 @@ end
 
 set :css_dir, 'stylesheets'
 
+#Make all links relative by default
+set :relative_links, true

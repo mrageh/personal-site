@@ -7,14 +7,17 @@
 
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= current_page.data.title %></title>
+    <link href='//fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
     <%= stylesheet_link_tag :styles %>
     <%= javascript_include_tag :all %>
   </head>
 
   <body>
+    <%= partial "header" %>
     <%= yield %>
+    <%= partial "footer" %>
   </body>
 </html>
