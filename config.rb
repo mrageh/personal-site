@@ -34,6 +34,11 @@ end
 #   end
 # end
 
+activate :blog do |blog|
+  blog.prefix = "blog"
+  blog.permalink = "{year}/{title}.html"
+end
+
 # Build-specific configuration
 configure :build do
   # Minify CSS on build

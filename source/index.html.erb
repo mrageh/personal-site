@@ -7,12 +7,18 @@ title: Home
     <img src="images/adam.png" alt="me">
 
     <p>
-      Hey, you've stumbled across my tiny corner of the big wide web. My name is Adam Magan and I am a polyglot. I spend most of my weekdays improving <a href="https://www.futurelearn.com/">FutureLearn</a> as a Ruby developer.
+    Hey, you've stumbled across my tiny corner of the big wide web. My name is Adam Magan and I am a polyglot developer with an ops background. I spend most of my weekdays building and improving <a href="https://www.futurelearn.com/">FutureLearn</a> as a Ruby developer.
     </p>
   </div>
 
   <div class="left">
     <h4 class='main-title'>Recent Projects</h4>
+
+    <ol>
+      <% blog.articles[0...2].each do |article| %>
+        <li><%= link_to article.title, article %></li>
+      <% end %>
+    </ol>
   </div>
 
   <div class="right">
