@@ -1,0 +1,65 @@
+---
+title: The Current Object Self
+date: 2014-04-05 21:13
+tags: ruby, object model
+---
+
+In ruby there is always a object that knows how to execute a line of code, this object is
+known as the receiver of a method. For a long time I used to wonder why I could call methods
+with out explicitly decalaring a receiver? What makes it possible for me to just declare
+a new method without outside the scope of a class or module?
+
+```
+class Person
+  def get_name
+   name
+  end
+
+  def name
+    puts "Adam"
+    return self
+  end
+end
+```
+
+```
+def welcome
+  puts "Welcome to my blog"
+  return self
+end
+```
+
+In the first example we declared a person class with two instance methods.
+Remember earlier we said that in ruby a object is responsible for executing
+every line of code. Since we did not explicitly specify that object when
+calling the name method ruby did this for us. To find out what the current
+object is we can use the keyword self.
+
+```
+ adam = Person.new
+ adam.my_name
+	# Adam
+	# => #<Person:0x007fd52b9f6728>
+```
+
+The current object which is represented by the keyword self in ruby is always present.
+However the role of self is not held by one object for a very long time. In most
+programs even the basic ones that role is transferred between various objects.
+
+The second example makes ruby look like a functional programming language. When methods
+are declared in the top level scope they are declared as instance methods of the class
+Object. Main is a instance of Object that is always created at the top level scope when
+ruby first executes some code. At first this is not very apparent however if we check the
+output from our second example we will see that #welcome method is indeed a method that
+belongs to main.
+
+```
+welcome
+  # Welcome to my blog
+  # => main
+```
+
+If we don't define a explicit receiver of a method the receiver becomes self. That means
+methods and instance variables all end up belonging to self but if we explicitly declare
+a receiver it takes over the role of self. That's the basics of the current object which
+is also known as self.

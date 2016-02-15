@@ -1,0 +1,122 @@
+---
+title: Depending on behaviour rather then data
+date: 2014-04-07 16:16
+tags: ruby, oop
+---
+
+Lately I have been reading Sandi Metz's book Practical Object Oriented programming. This book is a must read once you have built a few programs and you have a basic grasp of ruby.
+
+In chapter 2 there is a section called 'depend on behaviour, not data'.  Sandi goes onto explain that depending on behaviour makes your code easier
+to change in the future. She suggests always wrapping your instance variables in accessor methods as that changes them from data which is referenced
+every, to behaviour which is defined once. For a few days I could not understand what she meant by this I was under the assumption that calling a method and variable did the exact same thing.
+
+Below is a practical example of why you should wrap your instance variables in accessor methods as opposed to having them sprinkled all over your code;
+
+		class BadBike
+		  def initialize(chainring, gears)
+		    @chainring = chainring
+		    @gears = gears
+		    @current_gear = 0
+		    @cog = gears[@current_gear]
+		  end
+
+		  def shift_up
+		    @current_gear += 1
+		    @cog = @gears[@current_gear]
+		  end
+
+		  def shift_down
+		    @current_gear -= 1
+		    @cog = @gears[@current_gear]
+		  end
+
+		  def replace_chain
+		  	# BUG!
+		    @current_gear = 0
+		  end
+
+		  def ratio
+		    @chainring / @cog.to_f
+		  end
+		end
+
+
+This code example is pretty straight forward and if we pay close attention to `BadBike#shift_up` and `BadBike#shift_down` we can see that every time we change the value of `@current_gear` we define `@cog = @gears[@current_gear]` so that the correct ratio is calculated. If we don't do this and set a new value of ```@current_gear``` we won't calculate the correct ratio. The below example illustrates this;
+
+
+		bad_bike = BadBike.new(10, [20,30,40])
+		bad_bike.inspect
+		=> #<BadBike:0x007fde849ceea0 @chainring=10, @gears=[20, 30, 40], @current_gear=0, @cog=20>
+		bad_bike.ratio
+		=> 0.5
+
+		bad_bike.shift_up
+		bad_bike.inspect
+		=> #<BadBike:0x007fde849ceea0 @chainring=10, @gears=[20, 30, 40], @current_gear=1, @cog=30>
+		bad_bike.ratio
+		=> 0.333333333
+
+		bad_bike.replace_chain
+		bad_bike.inspect
+		#notice the values of @cog and @current_gear are not updated
+		=> #<BadBike:0x007fde849ceea0 @chainring=10, @gears=[20, 30, 40], @current_gear=0, @cog=30>
+		bad_bike.ratio
+		=> 0.333333333
+
+In ruby the code for a instance variable is executed once, its value is calulcated and a reference to that value is stored somewhere in memory. Ruby already executed the last line in initialize. Therefore the value of `@cog` has already been set with the old value of `@current_gear`. So in `BadBike#replace_chain` we have introduced a bug. In order to remove this very subtle bug we need to reassign `@cog` with the new value of `@current_gear`. This introduces a lot of duplication and makes our code very brittle. If for some reason we have to change the way we calculte `@cog`, that change will have to be done in many places.
+
+
+Below is a better example;
+
+		class GoodBike
+			def initialize(chainring, gears)
+			  @chainring = chainring
+			  @gears = gears
+			  @current_gear = 0
+			end
+
+			def shift_up
+			  @current_gear += 1
+			end
+
+			def shift_down
+			  @current_gear -= 1
+			end
+
+			def replace_chain
+			  @current_gear = 0
+			  # No bug
+			end
+
+			def ratio
+			  chainring / cog.to_f
+			end
+
+			private
+
+			attr_reader :chainring, :current_gear, :gear
+
+			def cog
+			  @gears[@current_gear]
+			end
+		end
+
+		good_bike = GoodBike.new(10, [20,30,40])
+		good_bike.inspect
+		=> #<GoodBike:0x007fbbf1855980 @chainring=10, @gears=[20, 30, 40], @current_gear=0>
+		good_bike.ratio
+		=> 0.5
+
+		good_bike = GoodBike.new(10, [20,30,40])
+		good_bike.shift_up
+		good_bike.inspect
+		=> #<GoodBike:0x007fbbf1855980 @chainring=10, @gears=[20, 30, 40], @current_gear=1>
+		good_bike.ratio
+		=> 0.3333333333333333
+		good_bike.replace_chain
+		good_bike.inspect
+		=> #<GoodBike:0x007fbbf1855980 @chainring=10, @gears=[20, 30, 40], @current_gear=0>
+		good_bike.ratio
+		=> 0.5
+
+This time around the calculation of `cog` is encapsulated within a method. Thus everytime we call `cog` ruby executes the method and its value is calculated again. We removed a ton of duplication in our second example and the code is a lot easier to change in the near future. We are no longer dependant on the state(data) of our object and instead its behaviour(methods). In this example we can see some of the benefits of wrapping our instance variables in accessor methods.

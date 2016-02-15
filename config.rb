@@ -36,7 +36,9 @@ end
 
 activate :blog do |blog|
   blog.prefix = "blog"
-  blog.permalink = "{year}/{title}.html"
+  blog.permalink = "{title}"
+  blog.per_page = 10
+  blog.layout = "article_layout"
 end
 
 # Build-specific configuration
@@ -52,3 +54,7 @@ set :css_dir, 'stylesheets'
 
 #Make all links relative by default
 set :relative_links, true
+
+#Set markdown engine
+set :markdown_engine, :redcarpet
+set :markdown, fenced_code_blocks: true
