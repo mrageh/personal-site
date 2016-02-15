@@ -16,8 +16,10 @@
   </head>
 
   <body>
-    <%= partial "header" %>
-    <%= yield %>
+    <div id="wrapper">
+      <%= partial "header" %>
+      <%= yield %>
+    </div>
     <%= partial "footer" %>
   </body>
 </html>
