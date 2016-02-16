@@ -1,0 +1,20 @@
+---
+title: Home
+---
+
+.main-content
+  .about
+    %img{:alt => "me", :src => "images/adam.png"}/
+    %h4 Adam Magan
+    %h6 Software Engineer, Web, Ruby, Chef, Rust and Comp Sci
+    %p
+      Hey, you've stumbled across my tiny corner on the big wide web. My name is Adam Magan and I am a software engineer with an ops background. I spend most of my weekdays tinkering/improving
+      %a{:href => "https://www.futurelearn.com/"} FutureLearn
+      as a Ruby developer.
+  .left
+    %h4.main-title Recent Articles
+    %ol
+      - blog.articles[0...5].each do |article|
+        %li= link_to article.title, article
+  .right
+    %h4.main-title Recent Projects
