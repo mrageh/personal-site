@@ -55,6 +55,10 @@ set :css_dir, 'stylesheets'
 #Make all links relative by default
 set :relative_links, true
 
-#Set markdown engine
+#Set markdown engine and syntax highlighting
+activate :syntax
 set :markdown_engine, :redcarpet
-set :markdown, fenced_code_blocks: true
+set :markdown, :fenced_code_blocks => true, :smartypants => true
+
+#Ignore github syntax file
+ignore "source/stylesheets/github_highlighting.css.erb"
