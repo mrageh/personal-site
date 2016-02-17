@@ -8,6 +8,23 @@ body {
   position: relative;
 }
 
+.center-content {
+  @include outer-container($content-width);
+}
+
+.left {
+  @include span-columns(6);
+  margin: 20px auto;
+  text-align: left;
+}
+
+.right {
+  @include span-columns(6);
+  margin: 20px auto;
+  text-align: right;
+}
+
+////HEADER////
 header {
   margin: 0 auto;
   max-width: $max-width;
@@ -15,65 +32,17 @@ header {
   h3 {
     font-size: 1.35em;
   }
-
-  .right {
-    font-size: 1.15em;
-  }
 }
 
-footer {
-  background: $blue;
-  bottom: 0;
-  color: #fff;
-  height: 80px;
-  left: 0;
-  margin: 0 auto;
-  position: absolute;
-  right: 0;
-
-  .main-content {
-    .copyright {
-      margin-top: 28px;
-    }
-  }
-
-  p {
-    font-size: 0.8em;
-  }
-
-  ul {
-    li {
-      a {
-        color: #fff;
-      }
-    }
-  }
+.header-links {
+  font-size: 1.15em;
 }
 
-.main-content {
-  @include outer-container($content-width);
-
-  .left {
-    @include span-columns(6);
-    text-align: left;
-    margin: 20px auto;
-
-  }
-
-  .right {
-    @include span-columns(6);
-    text-align: right;
-    margin: 20px auto;
-
-    ul {
-      li {
-        display: inline-block;
-        margin: 0 10px;
-      }
-    }
-  }
+.section-title {
+  text-transform: uppercase;
 }
 
+//////ABOUT////////////
 .about {
   margin-bottom: 55px;
   margin-top: 35px;
@@ -103,9 +72,37 @@ footer {
   }
 }
 
-.left,
-.right {
-  .main-title {
-    text-transform: uppercase;
+.top-gutter {
+  margin-top: 28px;
+}
+
+/////////FOOTER//////
+footer {
+  background: $blue;
+  bottom: 0;
+  color: #fff;
+  height: 80px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+
+  p {
+    font-size: 0.8em;
+  }
+
+  ul {
+    li {
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+ul.links {
+  li {
+    display: inline-block;
+    margin: 0 10px;
   }
 }
