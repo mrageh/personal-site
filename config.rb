@@ -37,8 +37,10 @@ end
 activate :blog do |blog|
   blog.prefix = "blog"
   blog.permalink = "{title}"
-  blog.per_page = 10
   blog.layout = "article_layout"
+  blog.paginate = true
+  blog.page_link = "p{num}"
+  blog.per_page = 20
 end
 
 # Build-specific configuration

@@ -4,6 +4,7 @@ body {
 }
 
 .wrapper {
+  margin-bottom: 30px;
   min-height: 100%;
   position: relative;
 }
@@ -79,13 +80,9 @@ header {
 /////////FOOTER//////
 footer {
   background: $blue;
-  bottom: 0;
   color: #fff;
   height: 80px;
-  left: 0;
   margin: 0 auto;
-  position: absolute;
-  right: 0;
 
   p {
     font-size: 0.8em;

@@ -1,5 +1,15 @@
 ---
+pageable: true
 title: Blog
 ---
 
 .center-content
+  - blog.articles.each do |article|
+    %article
+      %h1
+        %a{:href => article.url}
+          = article.title
+        %time
+          = article.date.strftime('%b %e %Y')
+      =article.summary(150)
+      %a{:href => article.url} Read more
