@@ -40,7 +40,7 @@ activate :blog do |blog|
   blog.layout = "article_layout"
   blog.paginate = true
   blog.page_link = "p{num}"
-  blog.per_page = 20
+  blog.per_page = 8
 end
 
 # Build-specific configuration

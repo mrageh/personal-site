@@ -4,12 +4,22 @@ title: Blog
 ---
 
 .center-content
-  - blog.articles.each do |article|
-    %article
-      %h1
-        %a{:href => article.url}
-          = article.title
-        %time
-          = article.date.strftime('%b %e %Y')
-      =article.summary(150)
-      %a{:href => article.url} Read more
+  - page_articles.each do |article|
+    .article
+      %article
+        %h1
+          %a{:href => article.url}
+            = article.title
+          %time
+            = article.date.strftime('%b %e %Y')
+        =article.summary(150)
+
+.page-num
+  %p Page #{page_number} of #{num_pages}
+
+  - if page_number != 1
+    = link_to "<< previous", prev_page, class: 'pagination'
+
+  - if page_number != num_pages
+    = link_to "next >>", next_page, class: 'pagination'
+
