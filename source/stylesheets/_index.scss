@@ -1,0 +1,15 @@
+.main-sec {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid green;
+}
+
+.about {
+  text-align: center;
+  .image {
+    margin: 0 auto;
+
+    img {
+    }
+  }
+}
