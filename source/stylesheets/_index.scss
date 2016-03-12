@@ -1,15 +1,26 @@
 .main-sec {
   display: flex;
   flex-direction: column;
-  border: 3px solid green;
+  margin-top: 20px;
 }
 
 .about {
   text-align: center;
+
   .image {
     margin: 0 auto;
 
     img {
     }
+  }
+}
+
+.recent-activity {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+
+  .left, .right {
+    margin: 0 10px;
   }
 }
