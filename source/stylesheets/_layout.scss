@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100vh;
 }
 
@@ -8,7 +9,7 @@ html, body {
 }
 
 .site-content {
-  flex: 1;
+  flex: 1 1 auto;
 }
 
 .container {
