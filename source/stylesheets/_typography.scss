@@ -61,3 +61,13 @@ picture {
   margin: 0;
   max-width: 100%;
 }
+
+.header {
+  h3 {
+    font-size: $header-size;
+  }
+
+  li {
+    font-size: $nav-size;
+  }
+}
