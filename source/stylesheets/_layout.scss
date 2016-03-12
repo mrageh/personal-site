@@ -9,7 +9,7 @@ body {
 }
 
 .site-content {
-  flex: 1 1 auto;
+  flex: 4 1 auto;
 }
 
 .container {
@@ -17,7 +17,10 @@ body {
   width: 50em;
 }
 
-header,
+header {
+  flex: 1 1 auto;
+}
+
 footer {
   flex: none;
 }
