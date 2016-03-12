@@ -12,8 +12,9 @@
     = stylesheet_link_tag :syntax_highlighting
     = stylesheet_link_tag :github_highlighting
     = javascript_include_tag :all
-  %body
-    .wrapper
-      = partial "header"
-      = yield
+  %body.site
+    = partial "header"
+    %main.site-content
+      .container
+        = yield
     = partial "footer"
