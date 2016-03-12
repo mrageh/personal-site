@@ -34,8 +34,18 @@ a {
   }
 }
 
-h4.name {
+.name {
   color: $action-color;
+}
+
+.social-icons a {
+  color: $white;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: shade($white, 25%);
+  }
 }
 
 hr {

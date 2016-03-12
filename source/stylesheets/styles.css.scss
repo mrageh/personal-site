@@ -2,11 +2,14 @@
 @import 'normalize';
 @import 'fonts';
 
-@import 'layout';
-@import 'header';
-@import 'about';
-@import 'index';
-
+@import 'shade';
 @import 'variables';
 @import 'typography';
 @import 'lists';
+
+@import 'layout';
+@import 'header';
+@import 'footer';
+@import 'about';
+@import 'index';
+
