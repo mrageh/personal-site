@@ -35,6 +35,7 @@ a {
 }
 
 .name {
+  @include pulse($delay: 1s);
   color: $action-color;
 }
 
