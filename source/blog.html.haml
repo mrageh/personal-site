@@ -3,16 +3,15 @@ pageable: true
 title: Blog
 ---
 
-.container
-  - page_articles.each do |article|
-    .article
-      %article
-        %h1
-          %a{:href => article.url}
-            = article.title
-          %time
-            = article.date.strftime('%b %e %Y')
-        =article.summary(150)
+- page_articles.each do |article|
+  .article
+    %article
+      %h1
+        %a{:href => article.url}
+          = article.title
+      =article.summary(150)
+      %time.time
+        = article.date.strftime('%b %e %Y')
 
 .page-num
   %p Page #{page_number} of #{num_pages}
