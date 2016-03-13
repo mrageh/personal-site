@@ -2,6 +2,9 @@
 @import 'normalize';
 @import 'fonts';
 
+//SASS animations!!
+@import 'animate/animate';
+
 @import 'shade';
 @import 'variables';
 @import 'typography';
@@ -13,4 +16,3 @@
 @import 'about';
 @import 'index';
 @import 'blog';
-
