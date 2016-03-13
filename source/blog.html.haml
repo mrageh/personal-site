@@ -13,12 +13,28 @@ title: Blog
       %time.time
         = article.date.strftime('%b %e %Y')
 
-.page-num
-  %p Page #{page_number} of #{num_pages}
-
+.page-info
   - if page_number != 1
-    = link_to "<< previous", prev_page, class: 'pagination'
+    %a{:href => "#{url_for(prev_page)}", class: 'pagination'}
+      %span.round
+        %i.fa.fa-chevron-left
+      %span.txt prev
+  - else
+    %a{:href => "#", class: 'disable'}
+      %span.round
+        %i.fa.fa-chevron-left
+      %span.txt prev
+
+  .page-num
+    %p page #{page_number} of #{num_pages}
 
   - if page_number != num_pages
-    = link_to "next >>", next_page, class: 'pagination'
-
+    %a{:href => "#{url_for(next_page)}", class: 'pagination'}
+      %span.txt next
+      %span.round
+        %i.fa.fa-chevron-right
+  - else
+    %a{:href => "#", class: 'disable'}
+      %span.txt next
+      %span.round
+        %i.fa.fa-chevron-right
