@@ -26,10 +26,12 @@ a {
   color: $action-color;
   text-decoration: none;
   transition: color $base-duration $base-timing;
+  display: inline-block;
 
   &:active,
   &:focus,
   &:hover {
+    @include rubberBand();
     color: shade($action-color, 25%);
   }
 }
