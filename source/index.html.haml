@@ -16,7 +16,7 @@ title: Home
   .left
     %h4.section-title Recent Articles
     %ol
-      - blog.articles[0...5].each do |article|
+      - blog.articles[0..5].each do |article|
         %li= link_to article.title, article
   .right
     %h4.section-title Recent Projects
