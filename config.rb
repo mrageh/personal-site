@@ -64,3 +64,6 @@ set :markdown, :fenced_code_blocks => true, :smartypants => true
 
 #Ignore github syntax file
 ignore "source/stylesheets/github_highlighting.css.erb"
+
+#Pretty urls
+activate :directory_indexes
