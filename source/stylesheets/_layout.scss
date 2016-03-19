@@ -14,7 +14,9 @@ html {
 }
 
 .site-content {
-  flex: 4 1 auto;
+  // `flex-shrink: 0` and `flex-basis: auto` are need to work around
+  // Flexbox issues in IE 10-11.
+  flex: 4 0 auto;
 }
 
 .container {
