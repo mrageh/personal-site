@@ -5,6 +5,9 @@
 //SASS animations!!
 @import 'animate/animate';
 
+//Browser fix
+@import 'custom_media';
+
 @import 'shade';
 @import 'variables';
 @import 'typography';
@@ -16,3 +19,4 @@
 @import 'about';
 @import 'index';
 @import 'blog';
+
