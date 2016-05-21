@@ -4,13 +4,17 @@ date: 2014-04-07 16:16
 tags: ruby, oop
 ---
 
-Lately I have been reading Sandi Metz's book Practical Object Oriented programming. This book is a must read once you have built a few programs and you have a basic grasp of ruby.
+Lately I have been reading Sandi Metz's book Practical Object Oriented programming. This book is a must
+read once you have built a few programs and you have a basic grasp of ruby.
 
-In chapter 2 there is a section called 'depend on behaviour, not data'.  Sandi goes onto explain that depending on behaviour makes your code easier
-to change in the future. She suggests always wrapping your instance variables in accessor methods as that changes them from data which is referenced
-every, to behaviour which is defined once. For a few days I could not understand what she meant by this I was under the assumption that calling a method and variable did the exact same thing.
+In chapter 2 there is a section called 'depend on behaviour, not data'.  Sandi goes onto
+explain that depending on behaviour makes your code easier to change in the future. She suggests
+always wrapping your instance variables in accessor methods as that changes them from data which is referenced
+every, to behaviour which is defined once. For a few days I could not understand what she meant by this
+I was under the assumption that calling a method and variable did the exact same thing.
 
-Below is a practical example of why you should wrap your instance variables in accessor methods as opposed to having them sprinkled all over your code;
+Below is a practical example of why you should wrap your instance variables in accessor methods as
+opposed to having them sprinkled all over your code;
 
 ```ruby
   class BadBike

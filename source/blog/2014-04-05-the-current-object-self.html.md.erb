@@ -7,9 +7,10 @@ tags: ruby, object model
 In ruby there is always a object that knows how to execute a line of code, this object is
 known as the receiver of a method. For a long time I used to wonder why I could call methods
 with out explicitly decalaring a receiver? What makes it possible for me to just declare
-a new method without outside the scope of a class or module?
+a new method without outside the scope of a class or module? Is this why people call Ruby a
+scripting language?
 
-```
+```ruby
 class Person
   def get_name
    name
@@ -22,7 +23,7 @@ class Person
 end
 ```
 
-```
+```ruby
 def welcome
   puts "Welcome to my blog"
   return self
@@ -35,11 +36,11 @@ every line of code. Since we did not explicitly specify that object when
 calling the name method ruby did this for us. To find out what the current
 object is we can use the keyword self.
 
-```
+```ruby
  adam = Person.new
  adam.my_name
-	# Adam
-	# => #<Person:0x007fd52b9f6728>
+ # Adam
+ # => #<Person:0x007fd52b9f6728>
 ```
 
 The current object which is represented by the keyword self in ruby is always present.
@@ -53,8 +54,8 @@ ruby first executes some code. At first this is not very apparent however if we 
 output from our second example we will see that #welcome method is indeed a method that
 belongs to main.
 
-```
-welcome
+```ruby
+  welcome
   # Welcome to my blog
   # => main
 ```
